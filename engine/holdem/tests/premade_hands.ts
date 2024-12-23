@@ -1,5 +1,5 @@
-import { arrToCards, strToCard } from '../Card.ts';
-import type { HoldemStateType } from './state.ts';
+import { arrToCards, strToCard } from '../../Card.ts';
+import type { HoldemStateType } from '../state.ts';
 
 export const sixSameStack: HoldemStateType = {
 	seats: [
