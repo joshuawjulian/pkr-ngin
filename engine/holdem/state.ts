@@ -1,12 +1,12 @@
 import { z } from 'npm:zod';
 import {
-	DEALER_ACTIONS_TYPE,
-	DealerActionType,
+	type DEALER_ACTIONS_TYPE,
+	type DealerActionType,
 	HoldemActionSchema,
 	isDealerAction,
 	isPlayerAction,
 	nextPokerRound,
-	PlayerActionType,
+	type PlayerActionType,
 } from './action.ts';
 
 export const SeatSchema = z.object({
