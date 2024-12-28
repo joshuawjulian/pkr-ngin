@@ -36,7 +36,17 @@ export function stateToJson(state: HoldemStateType): string {
 }
 
 export function cloneState(state: HoldemStateType): HoldemStateType {
-	return JSON.parse(stateToJson(state));
+	return structuredClone(state);
+}
+
+export function stateAtIndex(
+	state: HoldemStateType,
+	index: number,
+): HoldemStateType {
+	return {
+		seats: state.seats,
+		actions: state.actions.slice(0, index),
+	};
 }
 
 export function cloneStateToIndex(
@@ -71,6 +81,17 @@ export function playersWithActionAtStartOfRound(
 	round: DEALER_ACTIONS_TYPE,
 ) {
 	// Get all players who have a viable action at the start of this round
+}
+
+export function seatsThatFolded(state: HoldemStateType): number[] {
+	return state.actions
+		.reduce((foldedSeats, action) => {
+			if (action.type === 'fold') {
+				foldedSeats.push(action.seat);
+			}
+			return foldedSeats;
+		}, new Array<number>())
+		.sort();
 }
 
 export function getIndexForRound(
