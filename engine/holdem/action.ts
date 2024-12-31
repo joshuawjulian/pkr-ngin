@@ -1,5 +1,7 @@
 import { z } from 'npm:zod';
 import { CardSchema } from '../Card.ts';
+import { HoldemOptionType } from './option.ts';
+import { HoldemStateType } from './state.ts';
 
 export const PLAYER_ACTIONS = [
 	'fold',
@@ -141,4 +143,12 @@ export function nextPokerRound(
 	if (currentRound === 'showdown') return currentRound;
 	const roundIndex = DEALER_ACTIONS.indexOf(currentRound);
 	return DEALER_ACTIONS[roundIndex + 1];
+}
+
+export function next(state: HoldemStateType): HoldemOptionType[] {
+	if (state.actions.length === 0) {
+		return [{ type: 'preflop', numCards: 0 }];
+	}
+
+	return [];
 }
