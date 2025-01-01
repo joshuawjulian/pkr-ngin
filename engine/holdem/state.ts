@@ -45,7 +45,7 @@ export function stateAtIndex(
 ): HoldemStateType {
 	return {
 		seats: state.seats,
-		actions: state.actions.slice(0, index),
+		actions: state.actions.slice(0, index + 1),
 	};
 }
 
